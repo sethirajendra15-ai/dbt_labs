@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name : raw_cust
+    schema: SF_SCHEMA
+    database: SNOWFLAKE_DBT_DATA
+    tables:
+      - name: cust # logical name
+        identifier: CUSTOMER #permanent
+      - name: delivery
+        identifier: DELIVERY_STATUS_FACT  
+  - name :  raw_prod
+    schema: PROD_SCH
+    database: SNOWFLAKE_DBT_DATA
+    tables:
+      - name: PRODUCT # logical name
