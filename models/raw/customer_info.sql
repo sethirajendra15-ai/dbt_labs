@@ -6,4 +6,4 @@ select
     date_of_birth,
     cast(email as varchar(100)) as email,
     phone
-from {{ ref('raw_cust','cust') }}
+from {{ source('raw_cust','cust') }}

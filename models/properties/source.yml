@@ -8,7 +8,8 @@ sources:
       - name: cust # logical name
         identifier: CUSTOMER #permanent
       - name: delivery
-        identifier: DELIVERY_STATUS_FACT  
+        identifier: DELIVERY_STATUS_FACT
+      - name: orders     
   - name :  raw_prod
     schema: PROD_SCH
     database: SNOWFLAKE_DBT_DATA
