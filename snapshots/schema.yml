@@ -1,0 +1,32 @@
+version: 2
+snapshots:
+  - name: supply_chain_orders_snapshot22
+    config:
+      database: DBT_DB2
+      target_schema: SILVER_SCH
+      unique_key: ORDER_ID
+      strategy: timestamp
+      updated_at: UPDATED_AT
+      query_tag:  dbt
+      snapshot_meta_column_names:
+        dbt_valid_from:  start_date
+        dbt_valid_to:  end_date
+        dbt_scd_id:  scd_id
+        dbt_updated_at:  modified_date
+        dbt_is_deleted:  is_deleted
+  - name: supply_chain_orders_snapshot
+    config:
+      database: DBT_DB2
+      target_schema: SILVER_SCH
+      unique_key: ORDER_ID
+      strategy: timestamp
+      updated_at: UPDATED_AT
+      hard_deletes: new_record
+      query_tag:  dbt
+      snapshot_meta_column_names:
+        dbt_valid_from:  start_date
+        dbt_valid_to:  end_date
+        dbt_scd_id:  scd_id
+        dbt_updated_at:  modified_date
+        dbt_is_deleted:  is_deleted      
+    
