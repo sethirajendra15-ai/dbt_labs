@@ -64,5 +64,24 @@ models:
       delete_insert:
         +materialized: incremental
         +incremental_strategy: delete+insert
-
+seeds:
+  my_new_project:
+    +database: dbt_db2
+    +schema: SILVER_SCH
+    country_info:
+      +column_types:
+        country_code: varchar(100)
+        country_name: varchar(100)
+        region: varchar(100)
+        currency: varchar(100)
+        language: varchar(100)
+    country_internet:
+      +delimiter: '|'   
+      +schema: DBT_SLIVER_SCH2
+      +column_types:
+        country_code: varchar(100)
+        internet_users_millions: number
+        mobile_subscriptions_millions: number
+        sim_card_prefix: varchar(10)
+    country_population:    
 
