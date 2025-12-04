@@ -39,4 +39,49 @@ models:
   my_new_project:
     # Applies to all files under models/example/
     example:
+      +materialized: view
+      +transient: false
+      +query_tag: 'DBT'
+    raw:
       +materialized: table
+      +database: DBT_OUTPUT
+      +schema: DBT_RAW_SCH
+    silver:
+      +materialized: table
+      +transient: false
+      +database: DBT_OUTPUT
+      +schema: SILVER_SCH
+    silver2:
+      +materialized: view
+      +database: dbt_db2
+      +schema: SILVER_SCH
+      incremental_append:       #model name
+        +materialized: incremental
+        +incremental_strategy: append
+      incremental_merge:        #model name
+        +materialized: incremental
+        +incremental_strategy: merge
+      delete_insert:
+        +materialized: incremental
+        +incremental_strategy: delete+insert
+seeds:
+  my_new_project:
+    +database: dbt_db2
+    +schema: SILVER_SCH
+    country_info:
+      +column_types:
+        country_code: varchar(100)
+        country_name: varchar(100)
+        region: varchar(100)
+        currency: varchar(100)
+        language: varchar(100)
+    country_internet:
+      +delimiter: '|'   
+      +schema: DBT_SLIVER_SCH2
+      +column_types:
+        country_code: varchar(100)
+        internet_users_millions: number
+        mobile_subscriptions_millions: number
+        sim_card_prefix: varchar(10)
+    country_population:    
+

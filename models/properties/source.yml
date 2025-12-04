@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name : raw_cust
+    schema: SF_SCHEMA
+    database: SNOWFLAKE_DBT_DATA
+    tables:
+      - name: cust # logical name
+        identifier: CUSTOMER #permanent
+      - name: delivery
+        identifier: DELIVERY_STATUS_FACT
+      - name: orders
+      - name: SUPPLY_CHAIN_ORDERS 
+      - name: TELECOM_CUSTOMERS
+        freshness: 
+          warn_after: {count: 1, period: hour }
+          error_after: {count: 2,period: hour}  
+        loaded_at_field: "convert_timezone ('UTC',registered_on)"   
+      - name: TELECOM_CUSTOMERS_FRESHNESS
+        freshness: 
+          warn_after: {count: 1, period: day }
+          error_after: {count: 2,period: day}  
+        loaded_at_field: "convert_timezone ('UTC',registered_on)" 
+  - name :  raw_prod
+    schema: PROD_SCH
+    database: SNOWFLAKE_DBT_DATA
+    tables:
+      - name: PRODUCT # logical name

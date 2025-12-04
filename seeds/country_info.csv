@@ -1,0 +1,11 @@
+country_code,country_name,region,currency,language
+IN,India,Asia,INR,Hindi
+US,United States,North America,USD,English
+GB,United Kingdom,Europe,GBP,English
+DE,Germany,Europe,EUR,German
+JP,Japan,Asia,JPY,Japanese
+AU,Australia,Oceania,AUD,English
+CA,Canada,North America,CAD,English/French
+BR,Brazil,South America,BRL,Portuguese
+ZA,South Africa,Africa,ZAR,English/Afrikaans
+CN,China,Asia,CNY,Mandarin
